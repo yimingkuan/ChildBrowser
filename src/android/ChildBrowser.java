@@ -118,7 +118,7 @@ public class ChildBrowser extends Plugin {
         try {
             Intent intent = null;
             if (usePhoneGap) {
-                intent = new Intent().setClass((Context) this.ctx, org.apache.cordova.DroidGap.class);
+                intent = new Intent().setClass(this.ctx, org.apache.cordova.DroidGap.class);
                 intent.setData(Uri.parse(url)); // This line will be removed in future.
                 intent.putExtra("url", url);
 
@@ -208,7 +208,7 @@ public class ChildBrowser extends Plugin {
         // Create dialog in new thread
         Runnable runnable = new Runnable() {
             public void run() {
-                dialog = new Dialog((Context) ctx);
+                dialog = new Dialog(ctx);
 
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setCancelable(true);
@@ -231,13 +231,13 @@ public class ChildBrowser extends Plugin {
                 LinearLayout.LayoutParams closeParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
                 LinearLayout.LayoutParams wvParams = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 
-                LinearLayout main = new LinearLayout((Context) ctx);
+                LinearLayout main = new LinearLayout(ctx);
                 main.setOrientation(LinearLayout.VERTICAL);
 
-                LinearLayout toolbar = new LinearLayout((Context) ctx);
+                LinearLayout toolbar = new LinearLayout(ctx);
                 toolbar.setOrientation(LinearLayout.HORIZONTAL);
 
-                ImageButton back = new ImageButton((Context) ctx);
+                ImageButton back = new ImageButton(ctx);
                 back.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         goBack();
@@ -251,7 +251,7 @@ public class ChildBrowser extends Plugin {
                 }
                 back.setLayoutParams(backParams);
 
-                ImageButton forward = new ImageButton((Context) ctx);
+                ImageButton forward = new ImageButton(ctx);
                 forward.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         goForward();
@@ -265,7 +265,7 @@ public class ChildBrowser extends Plugin {
                 }
                 forward.setLayoutParams(forwardParams);
 
-                edittext = new EditText((Context) ctx);
+                edittext = new EditText(ctx);
                 edittext.setOnKeyListener(new View.OnKeyListener() {
                     public boolean onKey(View v, int keyCode, KeyEvent event) {
                         // If the event is a key-down event on the "enter" button
@@ -281,7 +281,7 @@ public class ChildBrowser extends Plugin {
                 edittext.setText(url);
                 edittext.setLayoutParams(editParams);
 
-                ImageButton close = new ImageButton((Context) ctx);
+                ImageButton close = new ImageButton(ctx);
                 close.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         closeDialog();
@@ -295,7 +295,7 @@ public class ChildBrowser extends Plugin {
                 }
                 close.setLayoutParams(closeParams);
 
-                webview = new WebView((Context) ctx);
+                webview = new WebView(ctx);
                 webview.getSettings().setJavaScriptEnabled(true);
                 webview.getSettings().setBuiltInZoomControls(true);
                 WebViewClient client = new ChildBrowserClient(ctx, edittext);
