@@ -311,6 +311,8 @@ public class ChildBrowser extends Plugin {
                 webview.setLayoutParams(wvParams);
                 webview.requestFocus();
                 webview.requestFocusFromTouch();
+                webview.getSettings().setUseWideViewPort(true);
+                webview.getSettings().setLoadWithOverviewMode(true);
                 
                 
                 toolbar.addView(back);
